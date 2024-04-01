@@ -1,0 +1,649 @@
+1)  Write a program to create a class and implement a default, overloaded and copy constructor
+
+class P1a 
+{
+	private int data;
+
+    	//Default Constructor
+    	public P1a() 
+	{
+        	this.data = 10;
+    	}
+
+    	// Overloaded Constructor
+    	public P1a(int data) 
+	{
+        	this.data = data;
+    	}
+
+    	// Copy Constructor
+    	public P1a(P1a value) 
+	{
+       	 	this.data = value.data;
+    	}
+
+    	// Getter method to retrieve the value
+    	public int GetData() 
+	{
+        	return data;
+    	}
+
+    	public static void main(String[] args) 
+	{
+        	// Using the default constructor
+        	P1a obj1 = new P1a();
+        	System.out.println("\nDefault Constructor - Data for obj1 : " + obj1.GetData());
+
+        	// Using the overloaded constructor
+        	P1a obj2 = new P1a(100);
+        	System.out.println("\nOverloaded Constructor - Data for obj2 : " + obj2.GetData());
+
+        	// Using the copy constructor
+        	P1a obj3 = new P1a(obj2);
+        	System.out.println("\nCopy Constructor - Data for obj3 : " + obj3.GetData());
+    	}//main()
+}//class P1a 
+
+2) Write a program to create a class and implement the concepts of Method Overloading
+class P1b 
+{
+	void Show()
+	{
+		System.out.println("Show() method - 1");
+	}//Show()
+
+	void Show(int a)
+	{
+		System.out.println("Show() method - 2");
+	}//Show()
+
+	public static void main(String [] args)
+	{
+		P1b m=new P1b();
+		m.Show(100);
+	}//main()
+}//class P1b
+
+
+
+3)Write a program to create a class and implement the concepts of Static methods.
+
+import java.util.*;
+class P1c 
+{
+	//Static method
+	public static int Addition(int x, int y)
+	{
+       	 	return x + y;
+    	}//Addition
+	
+	//Static method
+    	public static int Subtraction(int x, int y) 
+	{
+        	return x - y;
+    	}//Subtraction
+
+	//Non-Static method
+    	public int Multiplication(int x, int y) 
+	{
+        	return x * y;
+    	}//Multiplication
+	
+	//Non-Static method
+   	public int Divison(int x, int y) 
+	{
+        	return x / y;
+   	}//Divison
+
+ 	public static void main(String [] args)
+	{	
+		int add, sub, mul, div, num1, num2;
+
+		Scanner sc=new Scanner(System.in);
+
+		System.out.println("------Data for Static and Non-Static Methods------");
+		System.out.print("Enter num1 : ");
+		num1=sc.nextInt();
+
+		System.out.print("\nEnter num2 : ");
+		num2=sc.nextInt();
+	
+		System.out.println("\n------Calling a Static Methods------");
+		//Calling a static method
+		add=Addition(num1,num2);
+		System.out.println("Addition : "+ add);
+
+		//Calling a static method
+		sub=Subtraction(num1,num2);		
+		System.out.println("\nSubtraction : "+ sub);
+
+		//Object creation to call non-static methods
+		P1c obj=new P1c();
+		
+		System.out.println("\n------Calling a Non-Static Methods------");
+		//Calling a non-static method
+		mul=obj.Multiplication(num1,num2);
+		System.out.println("Multiplication : "+ mul);
+
+		//Calling a non-static method
+		div=obj.Divison(num1,num2);
+		System.out.println("\nDivison : "+ div);
+	}//main()
+    	
+}//class P1c
+
+
+4) Write a program to implement the concepts of Inheritance and Method overriding.
+
+class A
+{
+	void Show()
+	{
+		System.out.println("Show() - 1");
+	}//Show()
+}//class A
+
+class B extends A
+{
+	void Show()
+	{
+		//super.Show(); //When you want to call parent class method
+		System.out.println("Show() - 2");
+	}//Show()
+}//class B
+
+class P2a
+{
+	public static void main(String [] args)
+	{
+		B obj=new B();
+		obj.Show();	
+	}//main()
+}//class P2a
+
+5)Write a program to implement the concepts of Abstract classes and methods.
+
+Save the file - Vehicle.java
+
+Compile - javac Vehicle.java
+
+
+abstract class Vehicle //Vehicle is Parent Class
+{
+	abstract void Start();
+}//class Vehicle
+
+//Inheritance
+class Car extends Vehicle //Car is Child Class
+{
+	void Start()
+	{
+		System.out.println("Car starts with a KEY");
+	}//Start()
+}//class Car
+class Bike extends Vehicle //Bike is Child Class
+{
+	void Start()
+	{
+		System.out.println("Bike starts with a KICK");
+	}//Start()
+	public static void main(String [] args)
+	{
+		Car c=new Car();
+		c.Start();
+
+		Bike b=new Bike();
+		b.Start();
+	}//main()
+}//class Bike
+
+
+6)  Write a program to implement the concept of interfaces.
+
+//Interface
+interface Bank
+{
+	float ROI();
+}//interface Bank
+interface SavingsAccount
+{
+	void Account();
+}//interface SavingsAccount
+class LenaBank implements Bank, SavingsAccount
+{
+	public float ROI()
+	{
+		return 8.2F;
+	}//ROI()
+	public void Account()
+	{
+		System.out.println("\nSavings Account");
+	}//Account()
+}//class LenaBank
+public class P2c 
+{
+	public static void main(String [] args)
+	{
+		Bank b1=new LenaBank();		
+		System.out.println("LenaBank - "+b1.ROI());
+
+		SavingsAccount a1=new LenaBank();		
+		a1.Account();		
+	}//main()
+}//class P2c
+
+
+7) WAP to demonstrate the concept of one dimensional array
+
+class ArrayDimension
+{
+  public static void main(String[]args)
+   {
+     int[] a=new int[3];//one dimensional
+     /*float[][] b=new float[3][2];//two dimensional*/
+	
+	System.out.println("one dimensional-"+a.getName());
+   }
+}
+
+8) Write a program to define user defined exceptions and raise them as per the requirements .
+
+
+import java.util.*;
+class NumberNotInRange extends Exception
+{
+	NumberNotInRange(String str)
+	{
+		//Call the constructor of parent class Exception
+		super(str);
+	}//NumberNotInRange
+}//class NumberNotInRange
+
+class P3b
+{
+	public static void main(String [] args)
+	{
+		int num;
+		Scanner sc=new Scanner(System.in);
+
+		System.out.println("Enter the number:");
+		num=sc.nextInt();
+
+		try
+		{
+			if(num<=100 && num>=1)
+			{
+				System.out.println("Your inputs are correct");
+			}//if
+			else
+			{	
+				throw new NumberNotInRange("The number should be in the range of 1 to 100");
+			}//else
+		}//try
+		catch(NumberNotInRange e)
+		{
+			System.out.println(e.getMessage());
+		}//catch		
+	}//main()
+}//class P3b	
+
+
+9)WAP tO demonstrate the concept of data hiding and encapsulation
+
+
+class Employee
+{
+   int empid=101;
+}
+class Company
+{
+   public static void main(String[]args)
+    {
+	Employee e=new Employee();
+	System.out.println(e.empid);
+    }
+}
+
+12) WAP to desigon a thread by extending a thread class
+
+class MyThread extends Thread 
+{
+	public void run()
+	{
+	 //Job/Task/Work-->THREAD
+	 for(int i=0;i<5;i++)
+	 {
+		System.out.println("MyThread class");
+	 }
+	}
+}
+classT1
+{
+	public static void main(String[]args)
+	{
+	 {MyThread t=new MyThread();
+	 t.start();
+	 //Job/Task/Work-->THREAD
+	 for(int i=0;i<5;i++)
+	 {
+		System.out.println("T1 class");
+	 }
+	}
+}
+
+
+
+10)  WAP to demonstrate arithmetical exception
+
+import java.util.Scanner;
+class ArithExcep
+{
+    public static void main(String[]args)
+    {
+        int a,b,c;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a:");
+        a=sc.nextInt();
+        
+        System.out.println("Enter b:");
+        b=sc.nextInt();
+        
+        System.out.println("\n a="+a);
+         System.out.println("\n b="+b);
+         
+         try
+         {
+             c=a/b;
+             System.out.println("\nc="+c);
+         }//try
+         catch ( ArithmeticException e)
+         {
+             System.out.println("\n please enter a non zero number");
+         }
+    }
+}
+
+
+11)WAP to demonstrate multiple catch block along with finally
+
+class ArrayIndex Excep
+{
+ public static void main(String[]args)
+	{
+	 int[]a={5,10};
+	 int b=5;
+	 
+	 try
+	 {
+	  int x=a[2]/b-a[1];
+	 }
+	catch(ArithmeticException e)
+	 {
+ 	   System.out.println("Division by Zero");
+	 }
+	catch(IllegalArgumentException e)
+	 {
+	  System.out.println("class not found");
+	 }
+	catch(ArrayIndexOutofBoundsException e)
+	 {
+	  System.outprintln("Array index error");
+	 }
+	finally
+	 {
+	  System.out.println("Applaication Executed");
+	 }
+	}
+}
+
+13) WAP to implement the runnable interface and create thread
+
+class MyRunnable implements Runnable
+{
+ public void run()
+  {
+   //Job/Task/Work-->THREAD
+   for(int i=0;i<5;i++)
+	{
+	 System.out.println("MyRunnable class");
+	}
+  }
+}
+class T2
+{
+ public static void main(String[]args)
+  {
+    MyRunnable=newMyRunnable();
+    Thread t=new Thread(r);
+    t.start();
+
+    //Job/Task/Woek-->THREAD
+    for(int i=0;i<5;i++)
+	{
+	 System.out.println("T2 class");
+	}
+  }
+}
+
+
+14) extending Frame class
+
+import java.awt.*;  
+class P1 extends Frame
+{  
+	P1()
+	{  
+		//Button class
+		Button b=new Button("Click Me");  
+
+		//Setting button position  
+/*setBounds(int x, int y, int width, int height) - Specifies the size of the frame and the location of the upper left corner x axis to the right and y axis to the bottom*/
+		b.setBounds(30,100,80,30);		
+			
+		//Adding button into frame  
+		add(b);
+		
+		//Frame size - 300 width and 300 height  
+		setSize(300,300);
+
+		//No layout manager  
+		setLayout(null);
+
+		//Now frame will be visible, by default not visible  
+		setVisible(true);
+	}  
+	public static void main(String args[])
+	{  
+		P1 p=new P1();  
+	}
+}  
+
+15) TextArea
+
+import java.awt.*;  
+class P5 
+{  
+     	public static void main(String args[])  
+	{  
+        		Frame f= new Frame();  
+            		TextArea t=new TextArea();  
+        		t.setBounds(10,30,300,200);  
+        		f.add(t);  
+        		f.setSize(400,400);  
+        		f.setLayout(null);  
+        		f.setVisible(true);
+	}  
+}  
+
+
+16) Labels and Buttons
+
+
+import java.awt.*;  
+class P3
+{  
+	public static void main(String args[])
+	{  
+    		Frame f= new Frame("Labels and Buttons");  
+
+		//Labels
+		Label l1,l2;  
+    		l1=new Label("Label 1");  
+   		l1.setBounds(50,100, 100,30); 
+ 
+    		l2=new Label("Label 2");  
+    		l2.setBounds(50,150, 100,30);  
+
+    		f.add(l1); 
+		f.add(l2);     		
+
+		//Buttons
+		Button b1, b2;
+		b1=new Button("Button 1");  
+		b1.setBounds(160,100, 100,30); 
+	
+		b2=new Button("Button 2");  
+		b2.setBounds(160,150, 100,30); 
+		 
+		f.add(b1);  
+		f.add(b2); 
+
+		f.setSize(400,400);  
+    		f.setLayout(null);  
+    		f.setVisible(true);  
+	}  
+}  
+
+17) By creating the object of Frame class (association)
+
+import java.awt.*;  
+class P2
+{  
+	P2()
+	{  
+		//Frame class
+		Frame f=new Frame();  
+		Button b=new Button("Click Me");  
+		b.setBounds(30,50,80,30);  
+		f.add(b);  
+		f.setSize(300,300);  
+		f.setLayout(null);  
+		f.setVisible(true);  
+	}  
+	public static void main(String args[])
+	{  
+		P2 p=new P2();  
+	}
+}  
+
+18) Flow Layout
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class P7a 
+{
+    	public static void main(String[] args) 
+	{
+        	// Create a JFrame
+        	JFrame f = new JFrame("Flow Layout");
+        	// Set the layout manager to FlowLayout
+        	f.setLayout(new FlowLayout());
+
+        	// Create buttons
+        	JButton b1 = new JButton("Button 1");
+        	JButton b2 = new JButton("Button 2");
+        	JButton b3 = new JButton("Button 3");
+        	JButton b4 = new JButton("Button 4");
+        	JButton b5 = new JButton("Button 5");
+
+        	// Add buttons to the frame
+        	f.add(b1);
+        	f.add(b2);
+        	f.add(b3);
+        	f.add(b4);
+        	f.add(b5);
+
+        	// Set JFrame properties
+        	f.setSize(600, 200);
+        	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        	f.setVisible(true);
+    	}//main()
+}//class P7a 
+
+19)  Grid Layout
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class P7b 
+{
+    	public static void main(String[] args) 
+	{
+        	// Create a JFrame
+        	JFrame f = new JFrame("Grid Layout");
+
+        	// Set the layout manager
+        	f.setLayout(new GridLayout(3, 3)); // 3 rows, 3 columns
+
+        	// Create buttons
+        	JButton[] buttons = new JButton[9];
+        	for (int i = 0; i < 9; i++) 
+		{
+            		buttons[i] = new JButton("Button " + (i + 1));
+            		f.add(buttons[i]); // Add button to the frame
+        	}//i
+
+        	// Set frame properties
+        	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        	f.setSize(300, 300); // Set size
+
+		//It is used to position a JFrame or JDialog relative to another component or on the screen. It allows you to specify where the frame should appear.
+        	f.setLocationRelativeTo(null); // Center the frame
+
+        	f.setVisible(true); // Make frame visible
+   	 }//main()
+}//class P7b 
+
+
+20) Border Layout
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class P7c 
+{
+    	public static void main(String[] args) 
+	{
+        	// Create a JFrame
+        	JFrame f = new JFrame("Border Layout");
+
+        	// Set the default close operation
+        	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        	// Create a panel with BorderLayout
+        	JPanel panel = new JPanel(new BorderLayout());
+
+        	// Add buttons to different regions of the panel
+        	panel.add(new JButton("North"), BorderLayout.NORTH);
+        	panel.add(new JButton("South"), BorderLayout.SOUTH);
+        	panel.add(new JButton("East"), BorderLayout.EAST);
+        	panel.add(new JButton("West"), BorderLayout.WEST);
+        	panel.add(new JButton("Center"), BorderLayout.CENTER);
+
+        	// Add the panel to the frame
+        	f.add(panel);
+
+        	// Set the size of the frame
+        	f.setSize(400, 300);
+
+        	// Center the frame on the screen
+        	f.setLocationRelativeTo(null);
+
+        	// Set the frame to be visible
+        	f.setVisible(true);
+    	}//main()
+}//public class P7c 
